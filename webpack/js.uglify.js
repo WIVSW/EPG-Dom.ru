@@ -1,13 +1,8 @@
-const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = function() {
     return {
         plugins: [
-            new webpack.optimize.UglifyJsPlugin({
-                sourceMap: true,
-                compress: {
-                    warnings: false,
-                }
-            })
+            new UglifyJSPlugin()
         ]
     };
 };
