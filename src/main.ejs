@@ -3,15 +3,234 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
   </head>
   <body>
-  	<div id="wrap">
-  		<header class="row"></header>
-  		<div class="row">
-  			<aside></aside>
-  			<main></main>
-  		</div>
-  		<footer class="row"></footer>
+  	<div id="wrap" class="loading">
+  		<header>
+        <div id="today_is">
+          <div id="date">15 марта, Ср</div>
+          <div id="time">13:44</div>
+        </div>
+        <nav id="days">
+          <button class="day">вс</button>
+          <button class="day">пн</button>
+          <button class="day">вт</button>
+          <button class="day active">Сегодня</button>
+          <button class="day">Завтра</button>
+          <button class="day">пт</button>
+          <button class="day">сб</button>
+          <button class="day">вс</button>
+          <button class="day">пн</button>
+          <button class="day">вт</button>
+          <button class="day">ср</button>
+        </nav>
+      </header>
+  		<section id="content">
+        <div id="channels_wrap">
+          <h6>Каналы:</h6>
+          <div id="channels">
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel active">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+            <div class="channel">
+              <div class="channel_lcn">999</div>
+              <div class="channel_title">Названия канала</div>
+              <div class="channel_description">Описание канала</div>
+            </div>
+          </div>
+        </div>
+        <div id="programms_wrap">
+          <div id="programms_slider">
+            <div id="scale" class="clearfix">
+              <div class="timestamp">13:00</div>
+              <div class="timestamp">13:30</div>
+              <div class="timestamp">14:00</div>
+              <div class="timestamp">14:30</div>
+              <div class="timestamp">15:00</div>
+              <div class="timestamp">15:30</div>
+              <div class="timestamp">16:00</div>
+              <div class="timestamp">16:30</div>
+              <div class="timestamp">17:00</div>
+              <div class="timestamp">17:30</div>
+              <div class="timestamp">18:00</div>
+              <div class="timestamp">18:30</div>
+            </div>
+            <div id="programms">
+              <div class="programm">
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show active" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+              </div>
+              <div id="programm_detail">
+                <div class="programm_title">Lorem ipsum dolor sit amet.</div>
+                <div class="programm_genre">Lorem ipsum dolor sit amet.</div>
+                <div class="programm_desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas tempora nesciunt hic earum reprehenderit. Ipsum eius sint voluptates dignissimos. Totam porro beatae eius, placeat facilis nihil eum ipsam doloribus, velit.</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+                <div class="show" style="width:480px">Название передачи</div>
+              </div>
+              <div class="programm">
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+                <div class="show" style="width:240px">Название передачи</div>
+              </div>
+            </div>
+            <i id="timepoint"></i>
+          </div>
+        </div>
+  		</section>
+  		<footer>
+        <button id="move_to_now">Сейчас в эфире</button>
+        <div id="days_controls">
+          <button id="prev_day"></button>
+          <button id="next_day"></button>
+          <span>переход по дням</span>
+        </div>
+        <div id="slider_wrap">
+          <input type="range" min="0" step="30" max="960" value="0">
+          <span>Полистать программу</span>
+        </div>
+      </footer>
   	</div>
   </body>
 </html>
