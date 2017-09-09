@@ -2,8 +2,11 @@ import '../scss/index.scss';
 import '../json/channels.json';
 import '../json/programms.json';
 
+//import './shared/object';
+
 import DateAndTime from './components/dateAndTime';
 import Days from './components/days';
+import ChannelsProgrammsCommunicator from './components/communicator';
 
 
 /* Логика приложение */
@@ -21,6 +24,11 @@ function prepareApp() {
 	let date = initDate();
 	createTimeEvent();
 	initDays(date.absTime);
+	initCommunicator();
+}
+
+function initCommunicator() {
+	new ChannelsProgrammsCommunicator();
 }
 
 function initDate() {

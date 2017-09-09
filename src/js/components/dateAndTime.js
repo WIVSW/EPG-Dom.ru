@@ -26,12 +26,7 @@ export default class {
 	}
 
 	nextMinute() {
-		let timeArr = this.time.split(':').map(str => parseFloat(str));
-
-		if (++timeArr[1] === 60) timeArr[0]++, timeArr[1] = 0;
-		if (timeArr[0] === 24) timeArr[0] = 0;
-
-		this.time = this.normalizeTime(timeArr);
+		this.time = Util.plusMin(1, this.time);
 
 		this.time === '00:00' ? this.nextDay() : this.update();
 	}
@@ -48,7 +43,7 @@ export default class {
 	}
 
 	parseTime(obj) {
-		return this.normalizeTime([
+		return Util.normalizeTime([
 			obj.getHours(),
 			obj.getMinutes()
 		]);
@@ -59,11 +54,5 @@ export default class {
 			m = Util.getMonths()[obj.getMonth()],
 			d = Util.getWeek()[obj.getDay()];
 		return `${obj.getDate()} ${m}, ${d}`;
-	}
-
-	normalizeTime(arr) {
-		if (arr[0] < 10) arr[0] = `0${arr[0]}`;
-		if (arr[1] < 10) arr[1] = `0${arr[1]}`;
-		return arr.join(':');
 	}
 }
