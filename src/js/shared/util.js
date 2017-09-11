@@ -47,6 +47,22 @@ function Util() {
 		return arr.join(':');
 	}
 
+	let addActiveClass = function() {
+		arguments.toArray().forEach(arg => {
+			if (arg) arg.classList.add('active');
+		});
+	}
+	let removeActiveClass = function() {
+		arguments.toArray().forEach(arg => {
+			if (arg) arg.classList.remove('active');
+		});
+	}
+
+	let getRand = (min, max) => {
+	    let rand = min + Math.random() * (max + 1 - min);
+	    return Math.floor(rand);
+	}
+
 
 	return {
 		getMonths: getMonths,
@@ -54,7 +70,10 @@ function Util() {
 		sendXHR: sendXHR,
 		plusMin:plusMin,
 		normalizeTime:normalizeTime,
-		timeToArr: timeToArr
+		timeToArr: timeToArr,
+		removeActiveClass: removeActiveClass,
+		addActiveClass: addActiveClass,
+		getRand: getRand
 	}
 }
 export default Util();

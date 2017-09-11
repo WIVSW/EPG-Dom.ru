@@ -10,6 +10,7 @@ export default class {
 		this.today = today;
 		this.array = [];
 		this.fragment = document.createDocumentFragment();
+		this.event = new Event('changeDay');
 
 		this.createDaysNavBar();
 
@@ -29,6 +30,12 @@ export default class {
 	}
 
 	nextDay() {
+		let content = document.getElementById('content');
+	
+		if (content.classList.contains('changing')) return false;
+
+		content.classList.add('changing');
+
 		let 
 			active = document.getElementsByClassName('day active')[0],
 			next = active.nextSibling,
@@ -39,6 +46,12 @@ export default class {
 	}
 
 	prevDay() {
+		let content = document.getElementById('content');
+	
+		if (content.classList.contains('changing')) return false;
+
+		content.classList.add('changing');
+
 		let 
 			active = document.getElementsByClassName('day active')[0],
 			prev = active.previousSibling,
@@ -49,8 +62,18 @@ export default class {
 	}
 
 	changeDay(active, target) {
-		target.classList.add('active');
-		active.classList.remove('active');
+		Util.addActiveClass(target);
+		Util.removeActiveClass(active);
+
+		this.clearTemplate();
+
+		target.parentNode.dispatchEvent(this.event);
+	}
+
+	clearTemplate() {
+		document.getElementById('scale').innerHTML = '';
+		document.getElementById('programms').innerHTML = '';
+		document.getElementById('channels').innerHTML = '';
 	}
 
 	createDaysNavBar() {

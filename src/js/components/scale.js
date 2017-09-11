@@ -2,19 +2,134 @@ import Util from '../shared/util';
 
 export default class {
 
-	constructor(startTime, data) {
+	/*
+		Этот модуль отвечает за создание
+		временной шкалы
+	*/
+
+	constructor(data) {
+		let day = document.getElementsByClassName('day active')[0];
+
+		this.isToday = day.textContent.trim().toLowerCase() === 'сегодня';
+		this.startTime = this.isToday ? '04:00' : this.generateTime();
+
+		this.isToday ? this.showControls() : this.hideControls();
+
 		this.pxPerMin = 8;
 		this.data = data;
-		this.array = this.prepareScaleArray(startTime);
+		
+		this.array = this.prepareScaleArray(this.startTime);
 		this.fragment = this.createScale(this.array);
 		this.insertScale();
 
-		this.initTimePoint(startTime);
+		this.initTimePoint(this.startTime);
+		this.prepareProgrammScroll();
+		this.initProgrammScroll();
+
 		this.setListeners();
 	}
 
 	setListeners() {
-		window.addEventListener('minute', () => this.nextMinute());
+		let that = this;
+		window.nextMinute = nextMinute;
+
+
+		window.addEventListener('minute', window.nextMinute);
+
+		document.getElementById('days')
+			.addEventListener('changeDay', () => this.removeListeners());
+
+
+		function nextMinute() {return that.nextMinute();}
+	}
+
+	removeListeners() {
+		window.removeEventListener('minute', window.nextMinute);
+	}
+
+	showControls() {
+		document.getElementById('timepoint')
+			.classList.remove('hide');
+	
+		document.getElementById('move_to_now')
+			.classList.remove('hide');
+	}
+	
+	hideControls() {
+		document.getElementById('timepoint')
+			.classList.add('hide');
+			
+		document.getElementById('move_to_now')
+			.classList.add('hide');
+	}
+
+	generateTime() {
+		let time = [];
+		time[0] = Util.getRand(0, 23);
+		time[1] = 30*Util.getRand(0, 1);
+		return Util.normalizeTime(time);
+	}
+
+	moveToNow() {
+		let
+			timepoint = document.getElementById('timepoint'),
+			timepointL = parseFloat(timepoint.style.left),
+			to = this.calcScrollVal(timepointL);
+
+		if (to < 0) to = 0;
+
+		this.moveScroll(to);
+	}
+
+	initProgrammScroll() {
+		let scroll = document.getElementById('scroll');
+
+		scroll.min = this.min;
+		scroll.max = this.max;
+		scroll.step = this.step;
+		this.moveScroll(this.initVal);
+	}
+
+	onScrollChange(e) {
+		let that = e.target;
+		this.moveScroll(parseFloat(that.value))
+	}
+
+	moveScroll(val) {
+		let 
+			scroll = document.getElementById('scroll'),
+			slider = document.getElementById('programms_slider');
+
+		scroll.value = val;
+		slider.style.left = `-${val}px`;
+	}
+
+	prepareProgrammScroll() {
+		let
+			halfW = 30*this.pxPerMin,
+			timepoint = document.getElementById('timepoint'),
+			wrapW = halfW*4,
+			timepointL = parseFloat(timepoint.style.left),
+			scaleW = halfW*this.array.length;
+
+		this.min = 0;
+		this.max = scaleW - wrapW;
+		this.step = halfW;
+		this.width = scaleW;
+		this.initVal = this.calcScrollVal(timepointL);
+	}
+
+	calcScrollVal(val) {
+		if (!this.isToday) return 0;
+
+		if (val < this.min || val > this.width) {
+			alert('Сейчас ничего не идет!');
+			return 0;
+		}
+
+		if (val > this.max ) return this.max;
+
+		return (Math.round(val/this.step) - 2)*this.step;
 	}
 
 	nextMinute() {

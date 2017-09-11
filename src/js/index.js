@@ -2,7 +2,8 @@ import '../scss/index.scss';
 import '../json/channels.json';
 import '../json/programms.json';
 
-//import './shared/object';
+import './shared/object';
+import './shared/html';
 
 import DateAndTime from './components/dateAndTime';
 import Days from './components/days';
@@ -12,23 +13,27 @@ import ChannelsProgrammsCommunicator from './components/communicator';
 /* Логика приложение */
 init();
 
-
 /* Функции */
 function init() {
-	document.getElementById('wrap')
-		.classList.remove('loading');
-
-	prepareApp();
-}
-function prepareApp() {
 	let date = initDate();
 	createTimeEvent();
 	initDays(date.absTime);
 	initCommunicator();
+
+	setListeners();
+}
+
+function setListeners() {
+	document.getElementById('days')
+		.addEventListener('changeDay', changeDay);
+}
+
+function changeDay(e) {
+	initCommunicator();
 }
 
 function initCommunicator() {
-	new ChannelsProgrammsCommunicator();
+	return new ChannelsProgrammsCommunicator();
 }
 
 function initDate() {
@@ -49,8 +54,10 @@ function createTimeEvent() {
 	let event = new Event('minute');
 	setInterval(() => 
 		window.dispatchEvent(event), 60*1000);
+		/* если изменить задержку, то можно увидеть
+			явнее обновление времени */
 }
 
 function initDays(today) {
-	let days = new Days(today);
+	return new Days(today);
 }

@@ -2,6 +2,7 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	outline: none;
 }
 .clearfix:after {
   content: "";
@@ -56,6 +57,23 @@ header {
 #content {
 	height: 86.5%;
 	width: 100%;
+	&.changing {
+		position: relative;
+		overflow: hidden;
+		&:after {
+			position: absolute;
+			content: 'Подгружается программа дня';
+			display: block;
+			background-color: #000;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+			color: #fff;
+			text-align: center;
+			line-height: 600px;
+			font-size: 23px;
+		}
+	}
 }
 
 footer {
@@ -94,7 +112,7 @@ footer {
 	background: none;
 	color: #b3b3b3;
 	margin: 0;
-	padding: 0 15px;
+	padding: 0 14px;
 	display: block;
 	float: left;
 	height: 100%;
@@ -115,6 +133,9 @@ footer {
 	bottom: 5px;
 	left: 0;
 	font-size: 20px;
+}
+.hide {
+	display: none;
 }
 #slider_wrap {
 	display: inline-block;
@@ -198,6 +219,7 @@ footer {
 #programms_slider {
 	width: 10000%;
 	position: relative;
+	transition: all 350ms linear;
 }
 #scale {
 	position: absolute;
@@ -214,6 +236,9 @@ footer {
 	width: 100%;
 	position: relative;
 	//background-color: green;
+	&.big {
+		height: 150px;
+	}
 }
 
 .channel {
@@ -225,6 +250,7 @@ footer {
 	color: #fff;
 	transition: all 350ms ease-in;
 	background-color: rgba(107, 107, 107, 0.5);
+	overflow: auto;
 	&:hover, &.active {
 		background-color: rgba(107, 107, 107, 0.9);
 	}
@@ -269,7 +295,7 @@ footer {
 #timepoint {
 	position: absolute;
 	width: 1px;
-	left: 120px;
+	left: -20px;
 	top: -15px;
 	bottom: 0;
 	background-color: red;
@@ -278,7 +304,7 @@ footer {
 }
 
 .show {
-	height: 50px;
+	height: 100%;
 	width: 120px;
 	float: left;
 	line-height: 50px;
@@ -296,12 +322,18 @@ footer {
 		background-color: rgba(107, 107, 107, 0.9);
 	}
 }
-
-#programm_detail {
-	width: 10%;
+#detail_wrap {
+	position: relative;
+	width: 100%;
 	height: 93px;
+}
+#programm_detail {
+	position: absolute;
+	top: 0;
+	width: 1%;
+	height: 100%;
 	padding: 5px;
-	overflow: hidden;
+	overflow: auto;
 }
 .programm_title {
 	color: #fff;

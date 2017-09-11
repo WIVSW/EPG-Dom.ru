@@ -1,7 +1,7 @@
 export default class {
 	/*
-		Этот модуль отвечает за подгрузку
-		каналов из json
+		Этот модуль отвечает за парсинг
+		каналов и действиями с каналами
 	*/
 	constructor(data) {
 		this.array = data;
@@ -24,7 +24,7 @@ export default class {
 				desc = document.createElement('div');
 
 			wrap.className = 'channel';
-			wrap.id = chan.epg_channel_id;
+			wrap.setAttribute('data-chan-id', chan.epg_channel_id);
 
 			lcn.className = 'channel_lcn';
 			lcn.textContent = chan.er_lcn;
